@@ -5,10 +5,10 @@ export const metadata = {
     title: "Broodl . DashBoard",
   };
 export default function DashBoardPage(){
-    const isAuthenticated=false
+    const isAuthenticated=true
     let children=(<Login/>)
     if(isAuthenticated){
-        children=(<DashBoardPage/>)
+        children=(<Dashboard/>)
     }
     return(
         <Main>{children}</Main>
