@@ -1,6 +1,8 @@
 'use client'
 import React,{useState} from 'react'
 import { gradients,baseRating } from '@/utils/index';
+import { Fugaz_One } from 'next/font/google';
+const fugaz = Fugaz_One({ subsets: ["latin"],weight:['400'] });
 // function toVietnamTime(date) {
 //   const vietnamOffset = 7 * 60; // Vietnam time is UTC+7 hours, which is 7 * 60 minutes
 //   const localOffset = date.getTimezoneOffset(); // Local time offset in minutes
@@ -25,6 +27,7 @@ const months = {
   November: 'Nov',
   December: 'Dec'
 };
+const monthsArr=Object.keys(months)
 
 const now = new Date();
 
@@ -41,19 +44,37 @@ const dayList = [
 export default function Calender({demo,completeData,handleSetMood}) {
   const now = new Date()
   const currentMonth=now.getMonth()
-  const [selectedMonth,setSelectedMonth]=useState(Object.keys(months)[currentMonth])
+  const [selectedMonth,setSelectedMonth]=useState(monthsArr[currentMonth])
   const [selectedYear,setSelectedYear]=useState(now.getFullYear())
-  const monthNow=new Date(selectedYear,Object.keys(months).indexOf(selectedMonth),1)
+  const monthNow=new Date(selectedYear,monthsArr.indexOf(selectedMonth),1)
   const firstDayOfMonth= monthNow.getDay()
-  const daysInMonth=new Date(selectedYear,Object.keys(months).indexOf(selectedMonth)+1,0).getDate()
+  const daysInMonth=new Date(selectedYear,monthsArr.indexOf(selectedMonth)+1,0).getDate()
   const daysToDisplay= firstDayOfMonth+ daysInMonth
   const numRows=(Math.floor(daysToDisplay/7))+(daysToDisplay%7?1:0)
-  const numericMonth=Object.keys(months).indexOf(selectedMonth)
+  const numericMonth=monthsArr.indexOf(selectedMonth)
   const data=completeData?.[selectedYear]?.[numericMonth]||{}
   const handleIncrementMonth=(val)=>{
-    
+    if(numericMonth+val<0){
+      setSelectedYear(curr=>curr-1)
+      setSelectedMonth(monthsArr[11])
+    }else if(numericMonth+val>11){
+      setSelectedYear(curr=>curr+1)
+      setSelectedMonth(monthsArr[0])
+    }else{
+      setSelectedMonth(monthsArr[numericMonth+val])
+    }
   }
   return (
+    <div className='flex flex-col gap-4'>
+    <div className='grid grid-cols-3 gap-4'>
+      <button onClick={()=>{
+        handleIncrementMonth(-1)
+      }}><i class="fa-solid fa-circle-chevron-left text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"></i></button>
+      <p className={'text-center capitalized textGradient '+fugaz.className}>{selectedMonth} {selectedYear}</p>
+      <button onClick={()=>{
+        handleIncrementMonth(1)
+      }}><i class="fa-solid fa-circle-chevron-right text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"></i></button>
+    </div>
     <div className='flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-6'>
       {[...Array(numRows).keys()].map((row,rowIndex)=>{
         return (
@@ -84,6 +105,7 @@ export default function Calender({demo,completeData,handleSetMood}) {
           </div>
         )
       })}
+    </div>
     </div>
   )
 }

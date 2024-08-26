@@ -32,7 +32,7 @@ export default function Dashboard() {
   }
   const statuses={
     ...countValues(),
-    time_remaining:`${now.getHours()}h${60-now.getMinutes()}m`,
+    time_remaining:`${now.getHours()}h ${60-now.getMinutes()}m`,
   }
   const handleSetMood=async(mood)=>{
     const day=now.getDate()
