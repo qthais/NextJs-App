@@ -11,8 +11,7 @@ export default function Login() {
   const [authenticating, setAuthenticating] = useState(false)
   const { signup, login } = useAuth()
   const handleSubmit = async () => {
-    if (!email || password.length < 6) {
-      console.log('invalid info')
+    if (!email || !password || password.length < 6) {
       return
     }
     setAuthenticating(true)
@@ -45,7 +44,7 @@ export default function Login() {
       }} className='w-full max-w-[400px] mx-auto px-4 py-2 sm:py-3 border 
       border-solid border-indigo-400 rounded-full hover:border-indigo-600 focus:border-indigo-600 outline-none' type="password" placeholder='Password' />
       <div className='max-w-[400px] w-full mx-auto'>
-        <Button clickHandler={handleSubmit} text={authenticating?'Submitting':"Submit"} full />
+        <Button clickHandler={handleSubmit} text={authenticating ? 'Submitting' : "Submit"} full />
       </div>
       <button onClick={() => {
         setIsRegister(!isRegister)

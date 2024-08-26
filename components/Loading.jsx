@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 export default function Loading() {
   return (
-    <div className=' flex flex-col flex-1 justify-center 
-    items-center'>
-        <i className="fa-solid text-slate-800 fa-spinner text-4xl sm:text-5xl"></i>
+    <div className="flex flex-col flex-1 justify-center items-center">
+      <i className="fa-solid fa-spinner text-slate-800 text-4xl sm:text-5xl animate-spin"></i>
+      <p className="py-4 text-center text-black text-3xl" aria-live="polite">Loading......</p>
     </div>
-  )
+  );
 }

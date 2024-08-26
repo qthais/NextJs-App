@@ -27,6 +27,7 @@ export function AuthProVider({ children }) {
     useEffect(() => {
         const unSubcribe=onAuthStateChanged(auth,async (user)=>{
             try {
+                console.log("auth change")
                 //Set the user to our local context state
                 setLoading(true)
                 setCurrentUser(user)
@@ -40,8 +41,7 @@ export function AuthProVider({ children }) {
                 let firebaseData={}
                 if(docSnap.exists()){
                     console.log('found user')
-                    firebase=docSnap.data()
-                    console.log(firebaseData)
+                    firebaseData=docSnap.data()
                 }
                 setUserDataObj(firebaseData)
             } catch (err) {
