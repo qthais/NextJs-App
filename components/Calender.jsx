@@ -2,6 +2,7 @@
 import React,{useState} from 'react'
 import { gradients,baseRating } from '@/utils/index';
 import { Fugaz_One } from 'next/font/google';
+import { FaChevronCircleLeft,FaChevronCircleRight } from 'react-icons/fa';
 const fugaz = Fugaz_One({ subsets: ["latin"],weight:['400'] });
 // function toVietnamTime(date) {
 //   const vietnamOffset = 7 * 60; // Vietnam time is UTC+7 hours, which is 7 * 60 minutes
@@ -67,13 +68,13 @@ export default function Calender({demo,completeData,handleSetMood}) {
   return (
     <div className='flex flex-col gap-4'>
     <div className='grid grid-cols-3 gap-4'>
-      <button onClick={()=>{
+      <button className='flex justify-center' onClick={()=>{
         handleIncrementMonth(-1)
-      }}><i class="fa-solid fa-circle-chevron-left text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"></i></button>
+      }}><FaChevronCircleLeft className="text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"/></button>
       <p className={'text-center capitalized textGradient '+fugaz.className}>{selectedMonth} {selectedYear}</p>
-      <button onClick={()=>{
+      <button className='flex justify-center' onClick={()=>{
         handleIncrementMonth(1)
-      }}><i class="fa-solid fa-circle-chevron-right text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"></i></button>
+      }}><FaChevronCircleRight className="text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"/></button>
     </div>
     <div className='flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-6'>
       {[...Array(numRows).keys()].map((row,rowIndex)=>{
