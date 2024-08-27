@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Button from './Button'
+import Button from '@/components/Button'
 import Link from 'next/link'
 import { useAuth } from '@/context/AuthContext'
 export default function CallToAction() {

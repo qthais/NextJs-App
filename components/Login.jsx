@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { Fugaz_One } from "next/font/google";
-import Button from './Button';
+import Button from '@/components/Button';
 import { useAuth } from '@/context/AuthContext';
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 export default function Login() {

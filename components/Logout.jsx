@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Button from './Button'
+import Button from '@/components/Button'
 import { useAuth } from '@/context/AuthContext'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'

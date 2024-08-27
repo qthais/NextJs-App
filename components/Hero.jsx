@@ -1,8 +1,6 @@
 import React from 'react'
-import Button from './Button';
 import { Fugaz_One } from "next/font/google";
 import Calender from './Calender';
-import Link from 'next/link';
 import CallToAction from './CallToAction';
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 export default function Hero() {

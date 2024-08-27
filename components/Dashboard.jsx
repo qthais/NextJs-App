@@ -1,9 +1,9 @@
 'use client'
 import React,{useEffect,useState} from 'react'
-import Login from './Login';
-import Loading from './loading';
+import Login from '@/components/Login';
+import Loading from '@/components//Loading';
 import { Fugaz_One } from "next/font/google";
-import Calender from './Calender';
+import Calender from '@/components/Calender';
 import { useAuth } from '@/context/AuthContext';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
