@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Fugaz_One } from "next/font/google";
 import Button from '@/components/Button';
 import { useAuth } from '@/context/AuthContext';
+import { FaGooglePlus } from 'react-icons/fa';
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -49,6 +50,8 @@ export default function Login() {
       <button onClick={() => {
         setIsRegister(!isRegister)
       }} className='text-center'>{isRegister ? 'Already have an account? ' : 'Don\'t have an account? '} <span className='text-indigo-600'>{isRegister ? 'Sign in' : 'Sign up'}</span></button>
+      <p className='text-xl'>Or</p>
+      <Button icon text='Sign in with Google'/>
     </div>
   )
 }
